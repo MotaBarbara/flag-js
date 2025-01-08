@@ -4,7 +4,34 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Javascript: Click Event</title>
-		<script></script>
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				const mainHeading = document.getElementById('mainHeading');
+
+				mainHeading.style.color = '#f00';
+				mainHeading.style.border = '2px solid #CCC';
+				mainHeading.style.padding = '8px';
+				mainHeading.style.fontFamily = 'Arial, sans-serif';
+				mainHeading.style.textAlign = 'center';
+
+				const secondaryHeading = document.getElementById('secondaryHeading');
+				secondaryHeading.classList.add('green-box');
+			});
+		</script>
+		<style>
+			.green-box {
+				width: 100%;
+				height: 300px;
+				background-color: #060;
+				text-align: center;
+				line-height: 300px;
+				font-weight: bold;
+				color: white;
+			}
+		</style>
 	</head>
-	<body></body>
+	<body>
+		<h1 id="mainHeading">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</h1>
+		<h2 id="secondaryHeading">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</h2>
+	</body>
 </html>
