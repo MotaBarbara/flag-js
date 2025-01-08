@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Javascript: Interact with Document</title>
+		<!-- The "defer" attribute makes scripts execute after HTML parsing, without blocking rendering -->
+		<script src="js-2.js" defer></script>
+		<script>
+			// DOM when your content is fully loaded do the function
+			document.addEventListener('DOMContentLoaded', function () {
+				const elHTML = document.getElementById('element');
+				console.log(elHTML); // <div id='element'>Hello World</div>
+				elHTML.textContent = 'Defer Attributes';
+
+				// Select the paragraph and change the text content of it
+				const pHTML = document.getElementById('elP');
+				pHTML.textContent = 'The defer attribute makes scripts execute after HTML parsing, without blocking rendering.';
+
+				console.log(pHTML); // <p id="elP">...</p>
+				console.log(pHTML.textContent); // The defer attribute makes scripts execute after HTML parsing, without blocking rendering.
+				console.log(typeof pHTML); // object
+			});
+		</script>
+		<!-- "Defer" and "document.addEventListener('DOMContentLoaded', function () {})" are doing the same - running the code only after the HTML parsing -->
+	</head>
+	<body>
+		<h1 class="el" id="element">Hello World</h1>
+		<p id="elP">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur architecto tempore recusandae.</p>
+	</body>
+</html>
