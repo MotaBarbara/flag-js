@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Javascript: Arrays and Events in Multiple Elements</title>
+		<script>
+			const countries = ['Portugal', 'Spain', 'Cabo Verde', 'Brazil', 'France'];
+
+			// Solution 1
+			let i = 0;
+			while (i < countries.length) {
+				console.log(i, countries[i] + ' - W/ while');
+
+				i++;
+			}
+
+			// Solution 2
+			for (let i = 0; i < countries.length; i++) {
+				console.log(i, countries[i] + ' - W/ for');
+			}
+
+			document.addEventListener('DOMContentLoaded', function () {
+				// Select Element by HTML Tag
+				const btns = document.getElementsByTagName('button');
+
+				for (let i = 0; i < btns.length; i++) {
+					btns[i].addEventListener('click', function () {
+						console.log(btns[i].textContent + ' - Clicked');
+					});
+				}
+			});
+		</script>
+		<style></style>
+	</head>
+	<body>
+		<button type="button">Button 1</button>
+		<button type="button">Button 2</button>
+		<button type="button">Button 3</button>
+	</body>
+</html>

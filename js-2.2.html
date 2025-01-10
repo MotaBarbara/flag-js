@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Javascript: Exercise - Change class when clicking a button</title>
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				const modalWrapper = document.getElementById('modalWrapper');
+				const showModal = document.getElementById('showModal');
+				const hideModal = document.getElementById('hideModal');
+
+				showModal.addEventListener('click', function () {
+					modalWrapper.classList.remove('hide');
+				});
+
+				hideModal.addEventListener('click', function () {
+					modalWrapper.classList.add('hide');
+				});
+			});
+		</script>
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+			}
+			.hide {
+				display: none !important;
+			}
+			#modalWrapper {
+				width: 100vw;
+				height: 100vh;
+				background-color: rgba(0, 0, 0, 0.4);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				top: 0;
+				left: 0;
+				position: fixed;
+			}
+			#modal {
+				width: 70vw;
+				height: 60vh;
+				background-color: #fff;
+				padding: 3rem;
+				text-align: center;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="modalWrapper" class="hide">
+			<div id="modal">
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo amet et fugiat quod iusto nobis sint explicabo numquam?</p>
+				<button type="button" id="hideModal">Yes, Accept</button>
+			</div>
+		</div>
+		<button id="showModal" type="button">Show Modal</button>
+	</body>
+</html>

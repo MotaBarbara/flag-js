@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Javascript: Exercise - Change class when clicking a button</title>
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				const btn = document.getElementById('btn');
+				const box = document.getElementById('box');
+
+				// Solution 1
+				/*
+				btn.addEventListener('click', function () {
+					if (box.classList.contains('red')) {
+						box.classList.remove('red');
+						box.classList.add('green');
+					} else {
+						box.classList.add('red');
+						box.classList.remove('green');
+					}
+				});
+				*/
+
+				// Solution 2
+				/*
+				let hasRed = false;
+				btn.addEventListener('click', function () {
+					if (hasRed == false) {
+						box.classList.remove('green');
+						box.classList.add('red');
+						hasRed = true;
+					} else {
+						box.classList.add('green');
+						box.classList.remove('red');
+						hasRed = false;
+					}
+				});
+				*/
+
+				// Solution 3
+				box.classList.add('red');
+				btn.addEventListener('click', function () {
+					box.classList.toggle('red');
+					box.classList.toggle('green');
+				});
+			});
+		</script>
+		<style>
+			.red {
+				width: 500px;
+				height: 400px;
+				background-color: #f00;
+				color: #fff;
+				font-size: 200%;
+				text-align: center;
+				line-height: 400px;
+			}
+			.green {
+				width: 250px;
+				height: 200px;
+				background-color: #060;
+				color: #fff;
+				font-weight: bold;
+				text-align: center;
+				line-height: 400px;
+			}
+		</style>
+	</head>
+	<body>
+		<button id="btn" type="button">Click to change the box</button>
+		<div id="box"></div>
+	</body>
+</html>

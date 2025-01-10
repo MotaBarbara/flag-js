@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Javascript: Game Rock, Scissors, Paper</title>
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				const cpuChoice = 'Paper';
+				const options = document.getElementsByTagName('button');
+				const result = document.getElementById('result');
+				const cpuMove = document.getElementById('cpuMove');
+
+				for (let i = 0; i < options.length; i++) {
+					options[i].addEventListener('click', function () {
+						const playerMove = options[i].textContent;
+						if (cpuChoice === playerMove) {
+							console.log('draw');
+							result.textContent = 'Draw 🙃, play again!';
+							cpuMove.textContent = cpuChoice;
+						} else if ((cpuChoice === 'Rock' && playerMove === 'Paper') || (cpuChoice === 'Paper' && playerMove === 'Scissors') || (cpuChoice === 'Scissors' && playerMove === 'Rock')) {
+							console.log('won');
+							result.textContent = 'You Won 😄';
+							cpuMove.textContent = cpuChoice;
+						} else {
+							console.log('lost');
+							result.textContent = 'You Lost 😞';
+							cpuMove.textContent = cpuChoice;
+						}
+					});
+				}
+			});
+		</script>
+		<style></style>
+	</head>
+	<body>
+		<h1>Game Rock, Scissors, Paper</h1>
+		<p>Computer Option: <span id="cpuMove"></span></p>
+		<p>User Option:</p>
+		<button type="button">Rock</button>
+		<button type="button">Paper</button>
+		<button type="button">Scissors</button>
+		<p id="result">Waiting for your move...</p>
+	</body>
+</html>
