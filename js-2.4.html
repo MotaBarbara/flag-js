@@ -10,22 +10,26 @@
 				const options = document.getElementsByTagName('button');
 				const result = document.getElementById('result');
 				const cpuMove = document.getElementById('cpuMove');
+				const playerMove = document.getElementById('playerMove');
 
 				for (let i = 0; i < options.length; i++) {
 					options[i].addEventListener('click', function () {
-						const playerMove = options[i].textContent;
-						if (cpuChoice === playerMove) {
+						const playerChoice = options[i].textContent;
+						if (cpuChoice === playerChoice) {
 							console.log('draw');
 							result.textContent = 'Draw 🙃, play again!';
 							cpuMove.textContent = cpuChoice;
-						} else if ((cpuChoice === 'Rock' && playerMove === 'Paper') || (cpuChoice === 'Paper' && playerMove === 'Scissors') || (cpuChoice === 'Scissors' && playerMove === 'Rock')) {
+							playerMove.textContent = playerChoice;
+						} else if ((cpuChoice === 'Rock' && playerChoice === 'Paper') || (cpuChoice === 'Paper' && playerChoice === 'Scissors') || (cpuChoice === 'Scissors' && playerChoice === 'Rock')) {
 							console.log('won');
 							result.textContent = 'You Won 😄';
 							cpuMove.textContent = cpuChoice;
+							playerMove.textContent = playerChoice;
 						} else {
 							console.log('lost');
 							result.textContent = 'You Lost 😞';
 							cpuMove.textContent = cpuChoice;
+							playerMove.textContent = playerChoice;
 						}
 					});
 				}
@@ -36,7 +40,7 @@
 	<body>
 		<h1>Game Rock, Scissors, Paper</h1>
 		<p>Computer Option: <span id="cpuMove"></span></p>
-		<p>User Option:</p>
+		<p>User Option: <span id="playerMove"></span></p>
 		<button type="button">Rock</button>
 		<button type="button">Paper</button>
 		<button type="button">Scissors</button>
