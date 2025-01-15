@@ -3,10 +3,10 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Javascript: Game Rock, Scissors, Paper</title>
+		<title>Javascript: Game Rock, Scissors, Paper with Random Numbers</title>
 		<script>
 			document.addEventListener('DOMContentLoaded', function () {
-				const cpuChoice = 'Paper';
+				const choices = ['Rock', 'Scissors', 'Paper'];
 				const options = document.getElementsByTagName('button');
 				const result = document.getElementById('result');
 				const cpuMove = document.getElementById('cpuMove');
@@ -14,6 +14,9 @@
 
 				for (let i = 0; i < options.length; i++) {
 					options[i].addEventListener('click', function () {
+						const randomPlay = Math.floor(Math.random() * choices.length);
+						const cpuChoice = choices[randomPlay];
+
 						const playerChoice = options[i].textContent;
 						if (cpuChoice === playerChoice) {
 							console.log('draw');

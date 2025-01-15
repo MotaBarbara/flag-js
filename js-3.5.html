@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Javascript: Random Numbers II - Guess a number between 1 and 10</title>
+		<script>
+			let userNumber = prompt('Guess a number between 1 and 10');
+			const randomNumber = Math.ceil(Math.random() * 10);
+			let attempts = 2;
+
+			// Cycle will run until the two conditions are true
+			while (randomNumber != userNumber && attempts > 0) {
+				attempts--;
+				userNumber = prompt('Try again, you skill have ' + attempts + ' attemps');
+			}
+
+			if (randomNumber == userNumber) {
+				console.log('Correct, your choice matches the Random Number');
+			} else{
+				console.log('Game Over!');
+			}
+		</script>
+		<style></style>
+	</head>
+	<body></body>
+</html>

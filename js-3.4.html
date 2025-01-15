@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Javascript: Random Numbers II - Guess a number between 1 and 10</title>
+		<script>
+			const userNumber = prompt('Guess a number between 1 and 10');
+			console.log('User Number ' + userNumber);
+			const randomNumber = Math.ceil(Math.random() * 10);
+			console.log('Random Number ' + randomNumber);
+
+			// Create a random number between 1 and 10, if the user matches the number, give 'correct', if not 'incorrect'
+			// use == instead of === because the result of the prompt will be a string and the result of the randomNumber will be a number
+			if (randomNumber == userNumber) {
+				console.log('Correct, your choice matches the Random Number');
+			} else {
+				console.log("Try again, your choice doesn't matches the Random Number");
+			}
+		</script>
+		<style></style>
+	</head>
+	<body></body>
+</html>
