@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Javascript: Timing Events</title>
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				let secondsPassed = 0;
+				let minutesPassed = 0;
+				let hoursPassed = 0;
+
+				setInterval(function () {
+					secondsPassed++;
+					document.getElementById('seconds').textContent = secondsPassed;
+					if (secondsPassed == 59) {
+						secondsPassed = 0;
+						minutesPassed++;
+						document.getElementById('minutes').textContent = minutesPassed;
+					}
+					if (minutesPassed == 59) {
+						minutesPassed = 0;
+						hoursPassed++;
+						document.getElementById('hours').textContent = hoursPassed;
+					}
+				}, 1);
+			});
+		</script>
+	</head>
+	<body>
+		<div>
+			<p>Hours: <span id="hours"></span></p>
+			<p>Minutes: <span id="minutes"></span></p>
+			<p>Seconds: <span id="seconds"></span></p>
+		</div>
+	</body>
+</html>
