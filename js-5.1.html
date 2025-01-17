@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Javascript: Exercise - Generate random colors</title>
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				function randomColor() {
+					return Math.floor(Math.random() * 256);
+					// return -> what information should the function get to the outside
+				}
+				setInterval(function () {
+					const red = randomColor(); // de 0 a 255
+					const green = randomColor();
+					const blue = randomColor();
+					console.log(red, green, blue);
+
+					// document.querySelector('body').style.backgroundColor = 'rgb(' + red + ',' + green + ',' + blue + ')';
+					document.querySelector('body').style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+				}, 7000);
+			});
+		</script>
+	</head>
+	<body></body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Javascript: Interaction with Forms</title>
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				const form = document.querySelector('form');
+				form.addEventListener('submit', function (event) {
+					event.preventDefault(); // Don't reload the page
+					console.log('Form submitted');
+					console.log(form.full_name.value);
+					console.log(form.email.value);
+					console.log(form.message.value);
+					if (form.password.value !== form.password_confirm.value) {
+						console.log('The password is not correct');
+					}
+				});
+			});
+		</script>
+		<style>
+			form {
+				display: flex;
+				flex-direction: column;
+				max-width: 500px;
+				align-items: center;
+			}
+			label {
+				display: flex;
+				flex-direction: column;
+				margin-bottom: 2rem;
+				gap: 0.5rem;
+				width: 100%;
+			}
+			input {
+				height: 2rem;
+			}
+			textarea {
+				height: 5rem;
+			}
+			button {
+				padding: 0.5rem;
+				min-width: 240px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+
+        1. Method - Can be get or post 
+        1.1. Get - gets data e.g. search by filter = get data from the app and display it
+        1.2. Post - post data e.g. registration form
+        2. action - To where the form information will go
+
+        -->
+
+		<form method="post" action="js-5.4.html">
+			<label>
+				Full Name
+				<input type="text" name="full_name" required />
+			</label>
+			<label>
+				Email
+				<input type="email" name="email" />
+			</label>
+			<label>
+				Password
+				<input type="password" name="password" />
+			</label>
+			<label>
+				Password
+				<input type="password" name="password_confirm" />
+			</label>
+			<label>
+				Message
+				<textarea name="message"></textarea>
+			</label>
+			<button type="submit">Submit Form</button>
+		</form>
+	</body>
+</html>

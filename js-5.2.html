@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Javascript: Work with dates and hours</title>
+		<script>
+			const dateTime = new Date();
+			console.log(dateTime); // Fri Jan 17 2025 21:04:34 GMT+0100 (Central European Standard Time)
+
+			// Date Components
+			console.log(dateTime.getYear()); // 125 = 1900 - 2025
+			console.log(dateTime.getFullYear()); // 2025
+			console.log(dateTime.getMonth() + 1); // 1 (Months are 0-indexed, so add 1)
+			console.log(dateTime.getDate()); // 17
+
+			// Time Components
+			console.log(dateTime.getHours()); // 21 (24-hour format)
+			console.log(dateTime.getMinutes()); // 04
+			console.log(dateTime.getSeconds()); // 34
+			console.log(dateTime.getMilliseconds()); // 123
+
+			// Day of the Week
+			console.log(dateTime.getDay()); // 5 (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
+
+			// Timezone Offset
+			console.log(dateTime.getTimezoneOffset()); // -60 (for GMT+0100 - 60min ahead of UTC)
+		</script>
+	</head>
+	<body>
+		<p>
+			<span id="hours"></span> : <span id="minutes"></span> :
+			<span id="seconds"></span>
+		</p>
+	</body>
+</html>

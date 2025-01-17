@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Javascript: Exercise: dates and hours</title>
+		<script>
+			const dateTime = new Date();
+			console.log(dateTime); // Fri Jan 17 2025 21:04:34 GMT+0100 (Central European Standard Time)
+
+			document.addEventListener('DOMContentLoaded', function () {
+				const hours = document.getElementById('hours');
+				const minutes = document.getElementById('minutes');
+				const seconds = document.getElementById('seconds');
+
+				// Option 1
+				let currentHours = dateTime.getHours();
+				let currentMinutes = dateTime.getMinutes();
+				let currentSeconds = dateTime.getSeconds();
+
+				setInterval(function () {
+					currentSeconds++;
+
+					if (currentSeconds === 59) {
+						currentSeconds = 0;
+						currentMinutes++;
+					}
+					if (currentMinutes === 59) {
+						currentMinutes = 0;
+						currentHours++;
+					}
+
+					// Add a 0 if the time is 1,2,.. 9
+					// Option 1 -> With IF/Else
+					// if (currentHours < 10) {
+					// 	hours.textContent = '0' + currentHours;
+					// } else {
+					// 	hours.textContent = currentHours;
+					// }
+
+					// if (currentMinutes < 10) {
+					// 	minutes.textContent = '0' + currentMinutes;
+					// } else {
+					// 	minutes.textContent = currentMinutes;
+					// }
+
+					// if (currentSeconds < 10) {
+					// 	seconds.textContent = '0' + currentSeconds;
+					// } else {
+					// 	seconds.textContent = currentSeconds;
+					// }
+
+					// Option 2 -> With Ternary operator
+					// If currentHours < 10 -> hours.textContent = '0' + currentHours else hours.textContent = currentHours
+					hours.textContent = currentHours < 10 ? '0' + currentHours : currentHours;
+					minutes.textContent = currentMinutes < 10 ? '0' + currentMinutes : currentMinutes;
+					seconds.textContent = currentSeconds < 10 ? '0' + currentSeconds : currentSeconds;
+				}, 1000);
+
+				// Option 2 - More Simple
+				// setInterval(function () {
+				// 	const newTime = new Date();
+
+				// 	hours.textContent = newTime.getHours();
+				// 	minutes.textContent = newTime.getMinutes();
+				// 	seconds.textContent = newTime.getSeconds();
+				// }, 1000);
+			});
+		</script>
+	</head>
+	<body>
+		<p>
+			<span id="hours"></span> : <span id="minutes"></span> :
+			<span id="seconds"></span>
+		</p>
+	</body>
+</html>
