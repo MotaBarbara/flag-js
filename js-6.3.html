@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Javascript: DOM Navigation</title>
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				const list = document.getElementById('list');
+
+				console.log(list.firstElementChild.textContent); // Item 1
+				console.log(list.firstElementChild.nextElementSibling.textContent); // Item 2
+
+				console.log(list.firstElementChild.nextElementSibling.nextElementSibling.textContent); // Item 3
+				console.log(list.children[2].textContent); // Item 3
+				console.log(list.children[2].nodeName); // LI -> HTML Tag
+
+				console.log(list.lastElementChild.previousElementSibling.textContent); // Item 4
+				console.log(list.lastElementChild.textContent); // Item 5
+
+				console.log(list.children[3].firstElementChild.children[2].firstElementChild.children[2].firstElementChild.textContent);
+			});
+		</script>
+	</head>
+	<body>
+		<ul id="list">
+			<li>Item 1</li>
+			<li>Item 2</li>
+			<li>Item 3</li>
+			<li>
+				Item 4
+				<ul>
+					<li>SubItem 1</li>
+					<li>SubItem 2</li>
+					<li>
+						SubItem 2
+						<ul>
+							<li>Nested Item 1</li>
+							<li>Nested Item 2</li>
+							<li>Nested Item 3 - <span>SPAN</span></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>Item 5</li>
+		</ul>
+	</body>
+</html>

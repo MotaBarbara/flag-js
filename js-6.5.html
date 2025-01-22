@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Javascript: DOM Manipulation</title>
+		<script>
+			// Add a <li> with "Item X" at every second
+			document.addEventListener('DOMContentLoaded', function () {
+				const list = document.getElementById('list');
+
+				let currentLi = 1;
+				const generateList = setInterval(function () {
+					list.appendChild(document.createElement('li')).textContent = 'Item ' + currentLi;
+
+					// Break loop
+					if (currentLi === 10) {
+						console.log('All list item created');
+						clearInterval(generateList);
+					}
+					currentLi++;
+				}, 1000);
+			});
+		</script>
+	</head>
+	<body>
+		<ul id="list"></ul>
+	</body>
+</html>

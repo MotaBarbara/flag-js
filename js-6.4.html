@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Javascript: DOM Manipulation</title>
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				const list = document.getElementById('list');
+				const p = document.getElementById('text');
+				const btn = document.getElementById('btnRemove');
+
+				/* Add new element to list
+                appendChild() → add child
+                document.createElement('li') → access html and create <li>
+                change text content of the new item
+                */
+				list.appendChild(document.createElement('li')).textContent = 'Item 3';
+				console.log(list);
+
+				// Remove element
+				// p.lastElementChild.remove();
+				console.log(p);
+
+				btn.addEventListener('click', function () {
+					btn.parentElement.previousSibling.remove();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<ul id="list">
+			<li>Item 1</li>
+			<li>Item 2</li>
+		</ul>
+		<p id="text">Lorem ipsum, dolor sit amet <em>consectetur adipisicing</em> elit. Quod dolore recusandae alias quo.</p>
+		<div>
+			<button type="button" id="btnRemove">Remove</button>
+		</div>
+	</body>
+</html>
