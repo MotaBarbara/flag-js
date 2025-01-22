@@ -9,18 +9,22 @@
 			document.addEventListener('DOMContentLoaded', function () {
 				const list = document.getElementById('list');
 				let currentLi = 1;
+				let reverse = false;
 				setInterval(function () {
-					if (currentLi < 11) {
-						list.appendChild(document.createElement('li'));
-						list.lastElementChild.textContent = 'Item ' + currentLi;
+					if (currentLi < 11 && reverse === false) {
+						list.appendChild(document.createElement('li')).textContent = 'Item ' + currentLi;
+						currentLi++;
 					} else {
+						reverse = true;
+					}
+					console.log(reverse);
+					if (reverse === true) {
 						list.lastElementChild.remove();
+						currentLi--;
+						if (currentLi <= 1) {
+							reverse = false;
+						}
 					}
-					if (currentLi === 20) {
-						currentLi = 0;
-					}
-					currentLi++;
-					console.log(currentLi);
 				}, 1000);
 			});
 		</script>

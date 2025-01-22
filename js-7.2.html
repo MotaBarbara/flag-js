@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Javascript: JSON</title>
+		<script>
+			// JSON - Transform Data Structure (Arrays, Objects) into Strings, allowing data to be sent from the backend to the frontend
+			const countries = [
+				{
+					name: 'Portugal',
+					capital: 'Lisboa',
+					populations: '10000000',
+				},
+				{
+					name: 'Spain',
+					capital: 'Madrid',
+					populations: '48370000',
+				},
+				{
+					name: 'France',
+					capital: 'Paris',
+					populations: '68000000',
+				},
+			];
+			console.log(countries[1].name); // Spain
+			const countriesJSON = JSON.stringify(countries);
+			console.log(countriesJSON);
+			// [{"name":"Portugal","capital":"Lisboa","populations":"10000000"},{"name":"Spain","capital":"Madrid","populations":"48370000"},{"name":"France","capital":"Paris","populations":"68000000"}]
+
+			sessionStorage['countries'] = countriesJSON;
+
+			countriesParse = JSON.parse(countriesJSON);
+			console.log(countriesParse);
+            // > (3) [{…}, {…}, {…}]
+		</script>
+	</head>
+	<body></body>
+</html>
