@@ -11,24 +11,26 @@
 				let listArr = [];
 				if (localStorage['tasks']) {
 					listArr = JSON.parse(localStorage['tasks']);
-				}
 
-				console.log(listArr);
-				console.log(listArr[0]);
+					console.log(listArr);
 
-				for (let i = 0; i < listArr.length; i++) {
-					list.appendChild(document.createElement('li')).textContent = listArr[i];
-					console.log(listArr[i]);
+					for (let i = 0; i < listArr.length; i++) {
+						list.appendChild(document.createElement('li')).textContent = listArr[i];
+						// Create <li> per element of the array
+						// Set text content of each <li> to the content of the current element of the array
+					}
 				}
 
 				form.addEventListener('submit', function (event) {
-					event.preventDefault();
+					event.preventDefault(); // prevent from leaving page
 
-					list.appendChild(document.createElement('li')).textContent = form.task.value;
+					list.appendChild(document.createElement('li')).textContent = form.task.value; // create new <li>
 
-					listArr.push(form.task.value);
+					listArr.push(form.task.value); // add value to the array
 
-					localStorage['tasks'] = JSON.stringify(listArr);
+					localStorage['tasks'] = JSON.stringify(listArr); // stringify array to add to localStorage
+
+					form.task.value = ''; // clean input after each submission
 				});
 			});
 		</script>
