@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Javascript: Arrow Functions</title>
+		<script>
+			document.addEventListener('DOMContentLoaded', () => {
+				const exampleOne = document.querySelector('#text-1');
+				const exampleTwo = document.querySelector('#text-2');
+
+				exampleOne.addEventListener('click', () => {
+					exampleOne.textContent =
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis atque obcaecati laboriosam inventore unde odio quod iste id, maxime numquam, quisquam quo esse ipsum!';
+				});
+
+				// We can't use arrow function if we use "this"
+				exampleTwo.addEventListener('click', function () {
+					this.textContent = 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum dolorum tenetur labore, voluptatibus quisquam doloribus quis nulla.';
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<p id="text-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque accusantium dolorem aspernatur dignissimos fugiat!</p>
+		<p id="text-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque accusantium dolorem aspernatur dignissimos fugiat!</p>
+	</body>
+</html>

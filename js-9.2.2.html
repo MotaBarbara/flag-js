@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Javascript: Chat App</title>
+		<script>
+			document.addEventListener('DOMContentLoaded', () => {
+				let username = 'Bárbara';
+				const form = document.querySelector('form');
+				const chatbox = document.getElementById('chatbox');
+				const bots = [
+					{
+						name: 'Fernando Pessoa',
+						message: [
+							'Nenhum livro para crianças deve ser escrito para crianças.',
+							'Todas as frases do livro da vida, se lidas até ao fim, terminam numa interrogação.',
+							'Livros são papéis pintados com tinta. Estudar é uma coisa em que está indistinta A distinção entre nada e coisa nenhuma.',
+							'Todo este universo é um livro em que cada um de nós é uma frase.',
+							'Duas coisas só me deu o Destino: uns livros de contabilidade e o dom de sonhar.',
+						],
+					},
+					{
+						name: 'Manuel Luís Goucha',
+						message: ['Senti que fui tão grande no Atlético de Madrid, o maior jogador da história do clube"'],
+					},
+					{
+						name: 'Paulo Futre',
+						message: [
+							'Quando te dão uma caneta para assinares o primeiro autógrafo é como te darem uma pistola com cinco balas em seis buracos para jogares à roleta russa.',
+							'Senti que fui tão grande no Atlético de Madrid, o maior jogador da história do clube',
+							'Fui o maior e faria tudo igual. Nunca mais apareceu ninguém a cair como eu',
+						],
+					},
+					{
+						name: 'Jorge Jesus',
+						message: [
+							'Querem fazer do rapaz o bode respiratório',
+							'Vocês os quatro formem aí um triângulo.',
+							'Oitchentcha e Otcho.',
+							'Venham para junto dos pinos efervescentes.',
+							'Isso dos estrangeiros não é um problema. Nós já estamos a tratar do processo de neutralização dos jogadores.',
+						],
+					},
+				];
+
+				/*
+				let currentTime;
+				function getCurrentTime() {
+					const now = new Date();
+					const hours = now.getHours();
+					const minutes = now.getMinutes();
+					const seconds = now.getSeconds();
+					currentTime = `${hours}:${minutes}:${seconds}`;
+				}
+				console.log(time);
+				*/
+
+				const now = new Date();
+				const currentTime = '[' + now.toLocaleTimeString('pt-PT') + ']';
+				let choosenSentence;
+				let author;
+
+				function randomSentence() {
+					author = Math.floor(Math.random() * bots.length);
+					const sentence = Math.floor(Math.random() * bots[author].message.length);
+					choosenSentence = bots[author].message[sentence];
+
+					console.log(author, sentence);
+					return choosenSentence;
+				}
+
+				// form.addEventListener('submit', function(e) {});
+				form.addEventListener('submit', e => {
+					e.preventDefault();
+					randomSentence();
+					// getCurrentTime();
+
+					let newMessage = chatbox.appendChild(document.createElement('div'));
+					newMessage.setAttribute('class', 'message-wrapper');
+
+					newMessage.appendChild(document.createElement('span')).textContent = username + ' - ';
+					newMessage.appendChild(document.createElement('span')).textContent = currentTime;
+					newMessage.appendChild(document.createElement('p')).textContent = form.message.value;
+
+					let botText = randomSentence();
+					console.log(botText);
+
+					let newMessageBot = document.createElement('div');
+					newMessageBot.setAttribute('class', 'message-wrapper-bot');
+
+					newMessageBot.appendChild(document.createElement('span')).textContent = bots[author].name + ' - ';
+					newMessageBot.appendChild(document.createElement('span')).textContent = currentTime;
+					newMessageBot.appendChild(document.createElement('p')).textContent = botText;
+
+					chatbox.appendChild(newMessageBot);
+				});
+			});
+		</script>
+		<style>
+			.chat-area {
+				height: 100vh;
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-end;
+				position: relative;
+			}
+			#chatbox {
+				overflow: auto;
+			}
+			form {
+				display: flex;
+				position: sticky;
+				bottom: 0;
+				width: 100%;
+				gap: 0.75rem;
+			}
+			.message-wrapper {
+				color: white;
+				background-color: rgb(4, 66, 4);
+				padding: 0.5rem;
+				border-radius: 0.35rem;
+				margin-bottom: 0.5rem;
+				width: 80%;
+				margin-left: auto;
+			}
+			.message-wrapper-bot {
+				color: white;
+				padding: 0.5rem;
+				border-radius: 0.35rem;
+				margin-bottom: 0.5rem;
+				width: 80%;
+				margin-right: auto;
+				background-color: rgb(11, 11, 11);
+			}
+
+			label {
+				flex-grow: 2;
+			}
+			input {
+				width: 100%;
+				height: 1.5rem;
+			}
+			p {
+				margin-top: 0.25rem;
+				margin-bottom: 0;
+			}
+			span {
+				color: rgb(165, 165, 165);
+				font-size: 0.7rem;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<div class="chat-area">
+				<div id="chatbox"></div>
+				<form action="js-9.2.html" method="post">
+					<label for="">
+						<input type="text" name="message" placeholder="Message..." />
+					</label>
+					<button type="submit">→</button>
+				</form>
+			</div>
+		</main>
+	</body>
+</html>
