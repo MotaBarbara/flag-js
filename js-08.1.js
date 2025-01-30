@@ -1,6 +1,7 @@
 const form = document.querySelector('form');
 let gameArea = document.querySelector('#gameArea');
-let attemptsLeft = document.querySelector('#attemptsLeft');
+let attemptsLeft = 6;
+let attemptsDisplay = document.querySelector('#attemptsLeft');
 let reload = document.getElementById('game-won');
 const words = [
 	'Amigo',
@@ -19,8 +20,7 @@ let choosenWord;
 
 function generateRandomNumber() {
 	let randomNumber = Math.floor(Math.random() * words.length);
-	choosenWord = words[randomNumber];
-	choosenWord = choosenWord.toUpperCase();
+	choosenWord = words[randomNumber].toUpperCase();
 	console.log(choosenWord);
 	console.log(choosenWord.length);
 	for (let i = 0; i < choosenWord.length; i++) {
@@ -43,40 +43,38 @@ form.addEventListener('submit', function (event) {
 		}
 	}
 	if (isCorrect === false) {
-		attemptsLeft.textContent = attemptsLeft.textContent - 1;
-	}
-
-	if (isCorrect === false && attemptsLeft.textContent > 0) {
-		attemptsLeft.textContent = attemptsLeft.textContent - 1;
-	}
-
-	if (isCorrect === false && attemptsLeft.textContent == 0) {
-		attemptsLeft.textContent = 'GAME OVER';
-	}
-	form.letter.value = '';
-	for (let i = 0; i < choosenWord.length; i++) {
-		if (gameArea.children[i].textContent === '_') {
-			gameWon = false;
-			return;
-		} else {
-			gameWon = true;
+		attemptsLeft--;
+		attemptsDisplay.lastElementChild.textContent = attemptsLeft;
+		if (attemptsLeft === 0) {
+			alert('GAME OVER');
+			window.location.reload();
 		}
 	}
-	console.log(gameWon);
 
-	if (gameWon === true) {
-		reload.appendChild(document.createElement('button')).textContent = 'Won, go again';
-	}
+	// form.letter.value = '';
+	// for (let i = 0; i < choosenWord.length; i++) {
+	// 	if (gameArea.children[i].textContent === '_') {
+	// 		gameWon = false;
+	// 		return;
+	// 	} else {
+	// 		gameWon = true;
+	// 	}
+	// }
+	// console.log(gameWon);
+
+	// if (gameWon === true) {
+	// 	reload.appendChild(document.createElement('button')).textContent = 'Won, go again';
+	// }
 });
-reload.addEventListener('click', function () {
-    reload.textContent = '';
-    gameArea.children 
-	generateRandomNumber();
-	for (let i = 0; i < choosenWord.length; i++) {
-		if (choosenLetter === choosenWord[i]) {
-			gameArea.children[i].textContent === '_';
-		}
-	}
-	isCorrect = false;
-	gameWon = false;
-});
+// reload.addEventListener('click', function () {
+// 	reload.textContent = '';
+// 	gameArea.children;
+// 	generateRandomNumber();
+// 	for (let i = 0; i < choosenWord.length; i++) {
+// 		if (choosenLetter === choosenWord[i]) {
+// 			gameArea.children[i].textContent === '_';
+// 		}
+// 	}
+// 	isCorrect = false;
+// 	gameWon = false;
+// });

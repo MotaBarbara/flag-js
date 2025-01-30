@@ -43,6 +43,28 @@
 						],
 					},
 				];
+				// function writeMessage(){}
+				const writeMessage = (name, message, realUser) => {
+					const now = new Date();
+					const currentTime = '[' + now.toLocaleTimeString('pt-PT') + ']';
+
+					let newMessage = chatbox.appendChild(document.createElement('div'));
+
+					// long way:
+					if (realUser) {
+						newMessage.setAttribute('class', 'message-wrapper');
+					} else {
+						newMessage.setAttribute('class', 'message-wrapper-bot');
+					}
+					// short way:
+					// newMessage.setAttribute('class', realUser ? 'message-wrapper' : 'message-wrapper-bot');
+
+					newMessage.appendChild(document.createElement('span')).textContent = name + ' - ';
+					newMessage.appendChild(document.createElement('span')).textContent = currentTime;
+					newMessage.appendChild(document.createElement('p')).textContent = message;
+
+					chatbox.scrollTo(0, chatbox.scrollHeight);
+				};
 
 				/*
 				let currentTime;
@@ -56,44 +78,41 @@
 				console.log(time);
 				*/
 
-				const now = new Date();
-				const currentTime = '[' + now.toLocaleTimeString('pt-PT') + ']';
-				let choosenSentence;
-				let author;
-
 				function randomSentence() {
-					author = Math.floor(Math.random() * bots.length);
-					const sentence = Math.floor(Math.random() * bots[author].message.length);
-					choosenSentence = bots[author].message[sentence];
+					const authorPosition = Math.floor(Math.random() * bots.length);
+					const sentencePosition = Math.floor(Math.random() * bots[authorPosition].message.length);
+					const sentence = bots[authorPosition].message[sentencePosition];
+					const author = bots[authorPosition].name;
 
 					console.log(author, sentence);
-					return choosenSentence;
+
+					// How to return more than 1 variable from a function
+					const bot = { name: author, message: sentence };
+					return bot;
 				}
+
+				setInterval(() => {
+					const randomNumber = Math.ceil(Math.random() * 10);
+					console.log(randomNumber);
+					if (randomNumber === 7) {
+						const botText = randomSentence();
+						console.log(botText); // e.g. {name: 3, message: 'Oitchentcha e Otcho.'}
+
+						const author = botText.name;
+						const message = botText.message;
+						console.log(author, message); // 3, 'Oitchentcha e Otcho.'
+
+						writeMessage(author, message, false);
+					}
+				}, 1300);
 
 				// form.addEventListener('submit', function(e) {});
 				form.addEventListener('submit', e => {
 					e.preventDefault();
-					randomSentence();
-					// getCurrentTime();
 
-					let newMessage = chatbox.appendChild(document.createElement('div'));
-					newMessage.setAttribute('class', 'message-wrapper');
+					writeMessage(username, form.message.value, true);
 
-					newMessage.appendChild(document.createElement('span')).textContent = username + ' - ';
-					newMessage.appendChild(document.createElement('span')).textContent = currentTime;
-					newMessage.appendChild(document.createElement('p')).textContent = form.message.value;
-
-					let botText = randomSentence();
-					console.log(botText);
-
-					let newMessageBot = document.createElement('div');
-					newMessageBot.setAttribute('class', 'message-wrapper-bot');
-
-					newMessageBot.appendChild(document.createElement('span')).textContent = bots[author].name + ' - ';
-					newMessageBot.appendChild(document.createElement('span')).textContent = currentTime;
-					newMessageBot.appendChild(document.createElement('p')).textContent = botText;
-
-					chatbox.appendChild(newMessageBot);
+					form.message.value = '';
 				});
 			});
 		</script>
@@ -155,7 +174,7 @@
 		<main>
 			<div class="chat-area">
 				<div id="chatbox"></div>
-				<form action="js-9.2.html" method="post">
+				<form action="js-09.2.html" method="post">
 					<label for="">
 						<input type="text" name="message" placeholder="Message..." />
 					</label>
